@@ -1,11 +1,11 @@
 # Deep Q Learning
 An implementaion of Deep Q Learning algorithm applied in a supper simple self-driving car
 
-## The car is poorly driving by it self
+## The car is poorly driven by it self
 
-https://github.com/donguyenvt/DeepQLearning/blob/master/DeepQLearning.gif
+<img src='https://github.com/donguyenvt/DeepQLearning/blob/master/DeepQLearning.gif' title='The car is poorly driven by it self' width='' alt='The car is poorly driven by it self' />
 
-Video created with Licecap.
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## The brain history
 

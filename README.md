@@ -1,6 +1,10 @@
 # Deep Q-Learning
 An implementaion of Deep Q-Learning algorithm using Pytorch applied in a supper simple self-driving car
 
+The Asynchronus one-step Q-learning taken from arXiv:1602.01783v2
+
+<img src='https://github.com/donguyenvt/DeepQLearning/blob/master/One-step_Q-learning_Algorithm.png' title='Obj' width='' alt='Obj' />
+
 ## The car is poorly driven by it self
 
 <img src='https://github.com/donguyenvt/DeepQLearning/blob/master/DeepQLearning.gif' title='The car is poorly driven by it self' width='' alt='The car is poorly driven by it self' />

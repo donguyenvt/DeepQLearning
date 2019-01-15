@@ -1,5 +1,5 @@
-# Deep Q Learning
-An implementaion of Deep Q Learning algorithm applied in a supper simple self-driving car
+# Deep Q-Learning
+An implementaion of Deep Q-Learning algorithm using Pytorch applied in a supper simple self-driving car
 
 ## The car is poorly driven by it self
 

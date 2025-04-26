@@ -21,6 +21,13 @@ from ai import Dqn
 
 # Adding this line if we don't want the right click to put a red point
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
+# Set the window size and allow it to be accessed from any host
+Config.set('graphics', 'width', '800')
+Config.set('graphics', 'height', '600')
+Config.set('graphics', 'resizable', '0')
+# Allow the app to be embedded in an iframe
+from kivy.core.window import Window
+Window.allow_screensaver = True
 
 # Introducing last_x and last_y, used to keep the last point in memory when we draw the sand on the map
 last_x = 0
@@ -232,4 +239,17 @@ class CarApp(App):
 
 # Running the whole thing
 if __name__ == '__main__':
+    # Set up the app to run on the web
+    import os
+    from kivy.config import Config
+    
+    # Set the port for the web server
+    port = 12000
+    
+    # Configure the app to run on the web
+    Config.set('graphics', 'width', '800')
+    Config.set('graphics', 'height', '600')
+    Config.set('graphics', 'resizable', '0')
+    
+    # Run the app
     CarApp().run()

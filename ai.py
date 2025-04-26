@@ -43,7 +43,7 @@ class ReplayMemory(object):
     
     def sample(self, batch_size):
         samples = zip(*random.sample(self.memory, batch_size))
-        return map(lambda x: Variable(torch.cat(x, 0)), samples)
+        return [torch.cat(x, 0) for x in samples]  # Updated to use list comprehension instead of map
 
 # Implementing Deep Q Learning
 
@@ -60,10 +60,10 @@ class Dqn():
         self.last_reward = 0
     
     def select_action(self, state):
-        probs = F.softmax(self.model(Variable(state, volatile = True))*100) # T=100
-        #action = probs.multinomial()
-        action = probs.multinomial(1)
-        return action.data[0,0]
+        with torch.no_grad():  # Replace volatile=True with no_grad() context
+            probs = F.softmax(self.model(state)*100, dim=1)  # T=100
+            action = probs.multinomial(1)
+            return action.data[0,0]
     
     def learn(self, batch_state, batch_next_state, batch_reward, batch_action):
         outputs = self.model(batch_state).gather(1, batch_action.unsqueeze(1)).squeeze(1)
@@ -71,8 +71,7 @@ class Dqn():
         target = self.gamma*next_outputs + batch_reward
         td_loss = F.smooth_l1_loss(outputs, target)
         self.optimizer.zero_grad()
-        # td_loss.backward(retain_variables = True) #retain_variables was deprecated
-        td_loss.backward(retain_graph = True)
+        td_loss.backward()  # Removed retain_graph=True as it's usually not needed
         self.optimizer.step()
     
     def update(self, reward, new_signal):
